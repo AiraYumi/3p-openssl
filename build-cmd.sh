@@ -53,18 +53,11 @@ source_environment_tempfile="$stage/source_environment.sh"
 
 OPENSSL_SOURCE_DIR="openssl"
 
-raw_version=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_NUMBER\s+([\d]+)/$1/ && print' "${OPENSSL_SOURCE_DIR}/include/openssl/opensslv.h")
+major_version=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_MAJOR\s+([\d]+)/$1/ && print' "${OPENSSL_SOURCE_DIR}/include/openssl/opensslv.h")
+minor_version=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_MINOR\s+([\d]+)/$1/ && print' "${OPENSSL_SOURCE_DIR}/include/openssl/opensslv.h")
+patch_version=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_PATCH\s+([\d]+)/$1/ && print' "${OPENSSL_SOURCE_DIR}/include/openssl/opensslv.h")
 
-major_version=$(echo ${raw_version:2:1})
-minor_version=$((10#$(echo ${raw_version:3:2})))
-build_version=$((10#$(echo ${raw_version:5:2})))
-
-patch_level_hex=$(echo $raw_version | cut -c 8-9)
-patch_level_dec=$((16#$patch_level_hex))
-str="abcdefghijklmnopqrstuvwxyz"
-patch_level_version=$(echo ${str:patch_level_dec-1:1})
-
-version_str=${major_version}.${minor_version}.${build_version}${patch_level_version}
+version_str=${major_version}.${minor_version}.${patch_version}
 
 build=${AUTOBUILD_BUILD_ID:=0}
 echo "${version_str}.${build}" > "${stage}/VERSION.txt"
@@ -319,6 +312,7 @@ print(':'.join(OrderedDict((dir.rstrip('/'), 1) for dir in sys.argv[1].split(':'
             # "shared" means build shared and static, instead of just static.
 
             ./Configure zlib threads shared no-idea "$targetname" -fno-stack-protector "$opts" \
+                --with-rand-seed=rdcpu,os \
                 --prefix="$stage" --libdir="lib/release" --openssldir="share" \
                 --with-zlib-include="$stage/packages/include/zlib-ng" \
                 --with-zlib-lib="$stage"/packages/lib/release/
@@ -341,7 +335,7 @@ print(':'.join(OrderedDict((dir.rstrip('/'), 1) for dir in sys.argv[1].split(':'
         ;;
     esac
     mkdir -p "$stage/LICENSES"
-    cp -a LICENSE "$stage/LICENSES/openssl.txt"
+    cp -a LICENSE.txt "$stage/LICENSES/openssl.txt"
 popd
 
 mkdir -p "$stage"/docs/openssl/
