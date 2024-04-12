@@ -102,11 +102,11 @@ pushd "$OPENSSL_SOURCE_DIR"
             mv libssl-3-x64.dll $stage/lib/release/.
             mv libssl-3-x64.pdb $stage/lib/release/.
             mv libssl_static.lib $stage/lib/release/.
-            mv libssl-3-x64.lib $stage/lib/release/.
+            mv libssl.lib $stage/lib/release/.
             mv libcrypto-3-x64.dll $stage/lib/release/.
             mv libcrypto-3-x64.pdb $stage/lib/release/.
             mv libcrypto_static.lib $stage/lib/release/.
-            mv libcrypto-3-x64.lib $stage/lib/release/.
+            mv libcrypto.lib $stage/lib/release/.
 
         ;;
 

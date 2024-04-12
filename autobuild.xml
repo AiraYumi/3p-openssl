@@ -175,14 +175,14 @@
           </map>
           <key>manifest</key>
           <array>
-            <string>lib/release/libssl*.lib</string>
+            <string>lib/release/libssl.lib</string>
             <string>lib/release/libssl_static.lib</string>
-            <string>lib/release/libssl*.dll</string>
-            <string>lib/release/libssl*.pdb</string>
-            <string>lib/release/libcrypto*.lib</string>
+            <string>lib/release/libssl-3-x64.dll</string>
+            <string>lib/release/libssl-3-x64.pdb</string>
+            <string>lib/release/libcrypto.lib</string>
             <string>lib/release/libcrypto_static.lib</string>
-            <string>lib/release/libcrypto*.dll</string>
-            <string>lib/release/libcrypto*.pdb</string>
+            <string>lib/release/libcrypto-3-x64.dll</string>
+            <string>lib/release/libcrypto-3-x64.pdb</string>
           </array>
           <key>name</key>
           <string>windows64</string>
