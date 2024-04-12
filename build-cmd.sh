@@ -2,9 +2,6 @@
 
 cd "$(dirname "$0")"
 
-major_version=3
-minor_version=0
-
 # turn on verbose debugging output for parabuild logs.
 exec 4>&1; export BASH_XTRACEFD=4; set -x
 # make errors fatal
@@ -134,9 +131,9 @@ pushd "$OPENSSL_SOURCE_DIR"
             # Not clear exactly why Configure/make generates lib*.1.0.0.dylib
             # for ${major_version}.${minor_version}.${build_version} == 1.0.1,
             # but obviously we must correctly predict the dylib filenames.
-            crypto_target_name="libcrypto.${major_version}.${minor_version}.dylib"
+            crypto_target_name="libcrypto.dylib"
             crypto_install_name="@executable_path/../Resources/${crypto_target_name}"
-            ssl_target_name="libssl.${major_version}.${minor_version}.dylib"
+            ssl_target_name="libssl.dylib"
             ssl_install_name="@executable_path/../Resources/${ssl_target_name}"
 
             # Force static linkage by moving .dylibs out of the way
