@@ -2,6 +2,9 @@
 
 cd "$(dirname "$0")"
 
+$major_version=3
+$minor_version=0
+
 # turn on verbose debugging output for parabuild logs.
 exec 4>&1; export BASH_XTRACEFD=4; set -x
 # make errors fatal
