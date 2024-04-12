@@ -64,14 +64,6 @@ pushd "$OPENSSL_SOURCE_DIR"
 
             mkdir -p "$stage/lib/release"
 
-            if [ "$AUTOBUILD_ADDRSIZE" = 32 ]
-            then
-                targetname=VC-WIN32
-            else
-                # might require running vcvars64.bat from VS studio
-                targetname=VC-WIN64A
-            fi
-
             # configure won't work with VC-* builds undex cygwin's perl, use window's one
 
             # Set CFLAG directly, rather than on the Configure command line.
@@ -82,7 +74,7 @@ pushd "$OPENSSL_SOURCE_DIR"
             # CFLAG can accept /switches and correctly pass them to cl.exe.
             export CFLAG="$LL_BUILD_RELEASE"
 
-            /cygdrive/c/Strawberry/perl/bin/perl Configure "$targetname" no-idea zlib threads -DNO_WINDOWS_BRAINDEATH \
+            /cygdrive/c/Strawberry/perl/bin/perl Configure "VC-WIN64A" no-idea zlib threads -DNO_WINDOWS_BRAINDEATH \
                 --with-zlib-include="$(cygpath -w "$stage/packages/include/zlib-ng")" \
                 --with-zlib-lib="$(cygpath -w "$stage/packages/lib/release/zlib.lib")"
 
@@ -107,19 +99,14 @@ pushd "$OPENSSL_SOURCE_DIR"
             # libssl.lib is for dll import. We probably don't care about
             # _static variant since we need a dll, include just in case
 
-            if [ "$AUTOBUILD_ADDRSIZE" = 64 ]
-            then sfx="-x64"
-            else sfx=""
-            fi
-
-            mv libssl*.dll $stage/lib/release/.
-            mv libssl*.pdb $stage/lib/release/.
+            mv libssl-3-x64.dll $stage/lib/release/.
+            mv libssl-3-x64.pdb $stage/lib/release/.
             mv libssl_static.lib $stage/lib/release/.
-            mv libssl*.lib $stage/lib/release/.
-            mv libcrypto*.dll $stage/lib/release/.
-            mv libcrypto*.pdb $stage/lib/release/.
+            mv libssl-3-x64.lib $stage/lib/release/.
+            mv libcrypto-3-x64.dll $stage/lib/release/.
+            mv libcrypto-3-x64.pdb $stage/lib/release/.
             mv libcrypto_static.lib $stage/lib/release/.
-            mv libcrypto*.lib $stage/lib/release/.
+            mv libcrypto-3-x64.lib $stage/lib/release/.
 
         ;;
 
@@ -158,13 +145,6 @@ pushd "$OPENSSL_SOURCE_DIR"
             export CFLAG="$opts"
             export LDFLAGS="-Wl,-headerpad_max_install_names"
 
-            if [ "$AUTOBUILD_ADDRSIZE" = 32 ]
-            then
-                targetname='darwin-i386-cc 386'
-            else
-                targetname='darwin64-x86_64-cc'
-            fi
-
             # It seems to be important to Configure to pass (e.g.)
             # "-iwithsysroot=/some/path" instead of just glomming them on
             # as separate arguments. So make a pass over $opts, collecting
@@ -196,7 +176,7 @@ pushd "$OPENSSL_SOURCE_DIR"
             unset packed[0]
 
             # Release
-            ./Configure zlib threads no-idea shared no-gost $targetname \
+            ./Configure zlib threads no-idea shared no-gost darwin64-x86_64-cc \
                 --prefix="$stage" --libdir="lib/release" --openssldir="share" \
                 --with-zlib-include="$stage/packages/include/zlib-ng" \
                 --with-zlib-lib="$stage/packages/lib/release" \
@@ -264,19 +244,12 @@ pushd "$OPENSSL_SOURCE_DIR"
                 fi
             done
 
-            if [ "$AUTOBUILD_ADDRSIZE" = 32 ]
-            then
-                targetname='linux-generic32'
-            else
-                targetname='linux-x86_64'
-            fi
-
             # '--libdir' functions a bit different than usual.  Here it names
             # a part of a directory path, not the entire thing.  Same with
             # '--openssldir' as well.
             # "shared" means build shared and static, instead of just static.
 
-            ./Configure zlib threads shared no-idea "$targetname" -fno-stack-protector "$opts" \
+            ./Configure zlib threads shared no-idea "linux-x86_64" -fno-stack-protector "$opts" \
                 --prefix="$stage" --libdir="lib/release" --openssldir="share" \
                 --with-zlib-include="$stage/packages/include/zlib-ng" \
                 --with-zlib-lib="$stage"/packages/lib/release/
