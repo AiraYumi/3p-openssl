@@ -112,12 +112,12 @@ pushd "$OPENSSL_SOURCE_DIR"
             else sfx=""
             fi
 
-            mv libssl$sfx.dll $stage/lib/release/.
-            mv libssl$sfx.pdb $stage/lib/release/.
+            mv libssl.dll $stage/lib/release/.
+            mv libssl.pdb $stage/lib/release/.
             mv libssl_static.lib $stage/lib/release/.
             mv libssl.lib $stage/lib/release/.
-            mv libcrypto$sfx.dll $stage/lib/release/.
-            mv libcrypto$sfx.pdb $stage/lib/release/.
+            mv libcrypto.dll $stage/lib/release/.
+            mv libcrypto.pdb $stage/lib/release/.
             mv libcrypto_static.lib $stage/lib/release/.
             mv libcrypto.lib $stage/lib/release/.
 
