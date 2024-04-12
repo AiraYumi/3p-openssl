@@ -158,35 +158,6 @@
           <key>name</key>
           <string>linux</string>
         </map>
-        <key>windows</key>
-        <map>
-          <key>configurations</key>
-          <map>
-            <key>default</key>
-            <map>
-              <key>build</key>
-              <map>
-              </map>
-              <key>default</key>
-              <string>true</string>
-              <key>name</key>
-              <string>default</string>
-            </map>
-          </map>
-          <key>manifest</key>
-          <array>
-            <string>lib/release/libssl.lib</string>
-            <string>lib/release/libssl_static.lib</string>
-            <string>lib/release/libssl-1_1.dll</string>
-            <string>lib/release/libssl-1_1.pdb</string>
-            <string>lib/release/libcrypto.lib</string>
-            <string>lib/release/libcrypto_static.lib</string>
-            <string>lib/release/libcrypto-1_1.dll</string>
-            <string>lib/release/libcrypto-1_1.pdb</string>
-          </array>
-          <key>name</key>
-          <string>windows</string>
-        </map>
         <key>windows64</key>
         <map>
           <key>configurations</key>
@@ -206,12 +177,12 @@
           <array>
             <string>lib/release/libssl.lib</string>
             <string>lib/release/libssl_static.lib</string>
-            <string>lib/release/libssl-1_1-x64.dll</string>
-            <string>lib/release/libssl-1_1-x64.pdb</string>
+            <string>lib/release/libssl-x64.dll</string>
+            <string>lib/release/libssl-x64.pdb</string>
             <string>lib/release/libcrypto.lib</string>
             <string>lib/release/libcrypto_static.lib</string>
-            <string>lib/release/libcrypto-1_1-x64.dll</string>
-            <string>lib/release/libcrypto-1_1-x64.pdb</string>
+            <string>lib/release/libcrypto-x64.dll</string>
+            <string>lib/release/libcrypto-x64.pdb</string>
           </array>
           <key>name</key>
           <string>windows64</string>
