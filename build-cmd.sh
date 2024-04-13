@@ -275,6 +275,7 @@ pushd "$OPENSSL_SOURCE_DIR"
     cp -a LICENSE.txt "$stage/LICENSES/openssl.txt"
 popd
 
+find $stage -name 'opensslv.h'
 version_str=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_STR\s+\"([\d\.]+)\"/$1/ && print' "$stage/include/openssl/opensslv.h")
 
 build=${AUTOBUILD_BUILD_ID:=0}
