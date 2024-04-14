@@ -75,6 +75,7 @@ pushd "$OPENSSL_SOURCE_DIR"
             export CFLAG="$LL_BUILD_RELEASE"
 
             /cygdrive/c/Strawberry/perl/bin/perl Configure "VC-WIN64A" no-idea zlib threads -DNO_WINDOWS_BRAINDEATH \
+                --with-rand-seed=rdcpu,os \
                 --with-zlib-include="$(cygpath -w "$stage/packages/include/zlib-ng")" \
                 --with-zlib-lib="$(cygpath -w "$stage/packages/lib/release/zlib.lib")"
 
@@ -178,6 +179,7 @@ pushd "$OPENSSL_SOURCE_DIR"
             # Release
             ./Configure zlib threads no-idea shared no-gost darwin64-x86_64-cc \
                 --prefix="$stage" --libdir="lib/release" --openssldir="share" \
+                --with-rand-seed=rdcpu,os \
                 --with-zlib-include="$stage/packages/include/zlib-ng" \
                 --with-zlib-lib="$stage/packages/lib/release" \
                 "${packed[@]}"
@@ -251,6 +253,7 @@ pushd "$OPENSSL_SOURCE_DIR"
 
             ./Configure zlib threads shared no-idea "linux-x86_64" -fno-stack-protector "$opts" \
                 --prefix="$stage" --libdir="lib/release" --openssldir="share" \
+                --with-rand-seed=rdcpu,os \
                 --with-zlib-include="$stage/packages/include/zlib-ng" \
                 --with-zlib-lib="$stage"/packages/lib/release/
             make depend
