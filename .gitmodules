@@ -1,0 +1,6 @@
+[submodule "a7e992847de83aa36be0c399c89db3fb827b0be2"]
+	path = a7e992847de83aa36be0c399c89db3fb827b0be2
+	url = https://github.com/openssl/openssl/
+[submodule "openssl"]
+	path = openssl
+	url = https://github.com/openssl/openssl/
