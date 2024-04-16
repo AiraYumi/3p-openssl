@@ -191,12 +191,12 @@
           <array>
             <string>lib/release/libssl.lib</string>
             <string>lib/release/libssl_static.lib</string>
-            <string>lib/release/libssl-1_1.dll</string>
-            <string>lib/release/libssl-1_1.pdb</string>
+            <string>lib/release/libssl-3.dll</string>
+            <string>lib/release/libssl-3.pdb</string>
             <string>lib/release/libcrypto.lib</string>
             <string>lib/release/libcrypto_static.lib</string>
-            <string>lib/release/libcrypto-1_1.dll</string>
-            <string>lib/release/libcrypto-1_1.pdb</string>
+            <string>lib/release/libcrypto-3.dll</string>
+            <string>lib/release/libcrypto-3.pdb</string>
           </array>
           <key>name</key>
           <string>windows</string>
@@ -220,12 +220,12 @@
           <array>
             <string>lib/release/libssl.lib</string>
             <string>lib/release/libssl_static.lib</string>
-            <string>lib/release/libssl-1_1-x64.dll</string>
-            <string>lib/release/libssl-1_1-x64.pdb</string>
+            <string>lib/release/libssl-3-x64.dll</string>
+            <string>lib/release/libssl-3-x64.pdb</string>
             <string>lib/release/libcrypto.lib</string>
             <string>lib/release/libcrypto_static.lib</string>
-            <string>lib/release/libcrypto-1_1-x64.dll</string>
-            <string>lib/release/libcrypto-1_1-x64.pdb</string>
+            <string>lib/release/libcrypto-3-x64.dll</string>
+            <string>lib/release/libcrypto-3-x64.pdb</string>
           </array>
           <key>name</key>
           <string>windows64</string>
