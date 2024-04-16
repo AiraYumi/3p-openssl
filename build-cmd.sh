@@ -299,7 +299,7 @@ pushd "$OPENSSL_SOURCE_DIR"
         ;;
     esac
     mkdir -p "$stage/LICENSES"
-    cp -a LICENSE "$stage/LICENSES/openssl.txt"
+    cp -a LICENSE.txt "$stage/LICENSES/openssl.txt"
 popd
 
 version_str=$(perl -ne 's/#\s*define\s+OPENSSL_VERSION_STR\s+\"([\d\.]+)\"/$1/ && print' "$stage/include/openssl/opensslv.h")
