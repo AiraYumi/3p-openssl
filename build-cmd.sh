@@ -271,7 +271,7 @@ pushd "$OPENSSL_SOURCE_DIR"
         ;;
     esac
     mkdir -p "$stage/LICENSES"
-    cp -a LICENSE "$stage/LICENSES/openssl.txt"
+    cp -a LICENSE.txt "$stage/LICENSES/openssl.txt"
 popd
 
 mkdir -p "$stage"/docs/openssl/
